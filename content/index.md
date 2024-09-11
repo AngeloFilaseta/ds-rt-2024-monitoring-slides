@@ -36,6 +36,7 @@ aliases = ["/conference/"]
 # Architecture
 
 {{< figure src="architecture.svg" height="20">}}
+
 ---
 
 # Evaluation

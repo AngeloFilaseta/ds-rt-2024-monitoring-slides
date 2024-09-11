@@ -30,10 +30,10 @@ isHTML = true
 
 [params.reveal_hugo]
 history = true
-theme = "league"
+theme = "moon"
 highlight_theme = "solarized-dark"
 slide_number = true
-transition = "slide"
+transition = "zoom"
 transition_speed = "fast"
 custom_theme = "custom-theme.scss"
 custom_theme_compile = true

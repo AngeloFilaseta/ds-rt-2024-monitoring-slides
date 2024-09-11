@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a1c9625-0014-46c6-a61c-af65bb8d958d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/static/alchemist.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/oneRootWithIndex.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/oneroot.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/custom-theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/custom-theme.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
