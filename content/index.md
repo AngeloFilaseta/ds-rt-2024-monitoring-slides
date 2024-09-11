@@ -1,71 +1,62 @@
 
 +++
 
-title = "Guide for writing markdown slides"
-description = "A Hugo theme for creating Reveal.js presentations"
+title = "An Architecture and Prototype for Monitoring Distributed Simulations of Distributed Systems"
+description = "DS-RT 2024"
 outputs = ["Reveal"]
-aliases = [
-    "/guide/"
-]
+aliases = ["/conference/"]
 
 +++
 
 
-# Short guide to Markdown slides
+# An Architecture and Prototype for Monitoring Distributed Simulations of Distributed Systems
 
 ---
 
-# Headers
+# Introduction
 
-# H1
-## H2
-### H3
-#### H4
+{{< figure src="problem.svg" height="20">}}
 
----
-
-# Text
-
-normal text
-
-`inline code`
-
-*italic*
-
-**bold**
-
-**_emphasized_**
-
-*__emphasized alternative__*
-
-~~strikethrough~~
-
-[link](http://www.google.com)
+{{< figure src="connections.svg" height="20">}}
 
 ---
 
-# Lists and enums
+# The Alchemist Simulator
 
-1. First ordered list item
-1. Another item
-    * Unordered sub-list.
-    * with two items
-        * another sublist
-            1. With a sub-enum
-            1. yay!
-1. Actual numbers don't matter, just that it's a number
-  1. Ordered sub-list
-1. And another item.
+<video loop data-autoplay src="alchemist.mp4"> </video>
 
 ---
 
-# Inline images
-
-![Alternative text](https://upload.wikimedia.org/wikipedia/commons/6/6c/Scavolino_innevata.jpg)
+# Use case
+    
+{{< figure src="use-case.svg" height="20">}}
 
 ---
 
-## Fallback to shortcodes for resizing
+# Architecture
+
+{{< figure src="architecture.svg" height="20">}}
+---
+
+# Evaluation
+
+{{< figure src="oneroot.gif" height="20">}}
+
+----
+
+# Evaluation 2
+
+Number of simulations used for the evaluation: 100
+{{< figure src="scalability.svg" height="20">}}
+
+---
+
+# Evaluation 3
+
+Number of simulations used for the evaluation: 10
+{{< figure src="efficiency.svg" height="20">}}
+
+---
 
 Autoresize specifying
 
