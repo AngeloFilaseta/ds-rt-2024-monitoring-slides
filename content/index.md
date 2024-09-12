@@ -8,6 +8,33 @@ aliases = ["/conference/"]
 
 +++
 
+<!--
+    Narrativa:
+    INTRO
+    - Simulazioni come strumento di testing, perché? 
+    - Multiple simulazioni, vengono poi aggregate per ottenre un risultato
+    - Problemi, ci vuole un fracco di tempo (mostra processo)
+    OBJECTIVE
+    - Creare un architettura che permette di visionare aspetti di simulazioni a run time
+    HOW TO DO THIS?
+    - Monitorare simulazione distributie non è troppo diverso da monitorare un DS classico ma...
+    - ci servono le seguenti cose - poter ottenere feedback realtime,
+        che i messaggi siano piccoli, poter cambiare cosa osservare velocemente,
+        poter monitorare più simulazioni e aggregare i dati
+    - filter what to monitor
+    ARCHITECTURE
+    - Elements
+    - How they interact
+    - Aggregation... lot of methods in literature
+    Prototype
+    - Alchemist and GraphQL
+    Evalutaion
+    - Simulation example
+    - DEMO
+    - RESULTS
+    Future Work
+
+-->
 
 # An Architecture and Prototype for Monitoring Distributed Simulations of Distributed Systems
 
@@ -23,17 +50,28 @@ aliases = ["/conference/"]
 
 # The Alchemist Simulator
 
+{{< figure src="logo.svg" height="20">}}
 <video loop data-autoplay src="alchemist.mp4"> </video>
 
 ---
 
 # Use case
-    
+
+
+
 {{< figure src="use-case.svg" height="20">}}
 
 ---
 
 # Architecture
+
+## Key Components
+
+-  **Target Distributed System (TDS)**: the simulated element where the properties of interest are located;
+-  **Network Node**: the logical device, identified hosting and executing one or more **TDS**s.
+-  **Broker**: offers an interface to interact with a **TDS**.
+   In this architecture, a broker interacts with only one **TDS** using three types of interactions: _Query_, _Action_, and _Subscription_.
+- **Monitor**: interacts with multiple **Brokers** to obtain data from the **TDS**s.
 
 {{< figure src="architecture.svg" height="20">}}
 

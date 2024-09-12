@@ -8,7 +8,7 @@
 // @import url('reveal-js/lib/font/source-sans-pro/source-sans-pro.css');
 // @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Ubuntu');
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative');
+// @import url('https://fonts.googleapis.com/css2?family=Signika+Negative');
 // @import url('https://fonts.googleapis.com/css2?family=Open+Sans');
 
 // Serif
@@ -23,9 +23,11 @@
 // @import url('https://fonts.googleapis.com/css2?family=Fredoka+One');
 
 // Monospace
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono');
+// @import url('https://fonts.googleapis.com/css2?family=Inconsolata');
+// @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono');
 // @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono');
+
+// @import url('https://fonts.googleapis.com/css2?family=Arial');
 
 $backgroundColor: #f4f1eb;
 
@@ -58,6 +60,23 @@ $heading3Size: 1.3em;
 $heading4Size: 1.0em;
 
 @import "reveal-js/dist/theme/template/theme";
+
+.reveal,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: "Merriweather";
+}
+
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
 
 section.has-light-background {
 	$detailBackgroundColor: #bd2b0b !global;
