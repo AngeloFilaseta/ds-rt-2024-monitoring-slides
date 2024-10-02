@@ -16,7 +16,7 @@
 
 // Handwriting
 
-// @import url('https://fonts.googleapis.com/css2?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
 // @import url('https://fonts.googleapis.com/css2?family=Satisfy');
 
 // Display
@@ -41,8 +41,8 @@ $mainFontSize: 2em;
 // $headingFont: 'Source Sans Pro', Helvetica, sans-serif;
 // $mainFont: 'Ubuntu';
 // $headingFont: 'Ubuntu';
-$mainFont: 'Signika Negative';
-$headingFont: 'Signika Negative';
+$mainFont: 'Montserrat';
+$headingFont: 'Montserrat';
 // $mainFont: 'Open Sans';
 // $headingFont: 'Open Sans';
 
@@ -68,7 +68,7 @@ $heading4Size: 1.0em;
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  font-family: "Merriweather";
+  font-family: "Montserrat";
 }
 
 .container{
@@ -244,7 +244,6 @@ kbd {
   color: $mainColor;
   background-color: $backgroundColor;
   border-radius: 0.2em;
-  border-style: solid;
   border-width: 0.1em;
   box-shadow: 0 0 0.1em $mainColor, 0.1em 0.1em 0em $mainColor;
   font-family: 'Inconsolata';
@@ -284,7 +283,7 @@ kbd {
 }
 
 .reveal .slide-background:after {
-	content: "Authors - Title - Venue Year";
+	content: "Angelo Filaseta et al. - Evolving the Interaction with Simulators - DS-RT 2024";
 	position: absolute;
 	bottom: 2.5%;
 	right: 6%;
@@ -300,7 +299,6 @@ kbd {
 	// draw a red border
 	// border: 1px solid red;
 	text-align: left;
-	border: .2em dashed $detailBackgroundColor;
 	border-style: double;
 	border-radius: 1em;
 	padding: 0.5em;
@@ -370,4 +368,103 @@ html.blur-animation-light .backgrounds {
    -webkit-animation-timing-function: ease-out;
    -webkit-animation-fill-mode: forwards;
    -webkit-animation-delay: 0s;
- }
+}
+
+// CUSTOM CHAT
+#chat2 .form-control {
+border-color: transparent;
+}
+
+#chat2 .form-control:focus {
+border-color: transparent;
+box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #0101;
+}
+
+// CUSTOM SUN MOON CYCLE
+.sky {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    height: 200vh;
+    width: 200vh;
+    z-index: -999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 20s ease-in-out, color 20s ease-in-out;
+    animation: dayNightCycle 50s infinite;
+}
+
+@keyframes dayNightCycle {
+    0% {
+        background-color: #87CEEB; /* Day sky */
+        color: #000;
+    }
+    50% {
+        background-color: #2F4F4F; /* Night sky */
+        color: #FFF;
+    }
+    100% {
+        background-color: #87CEEB; /* Back to Day */
+        color: #000;
+    }
+}
+
+@keyframes suntrack {
+  from { transform: rotate(-0.25turn); }
+  to { transform: rotate(0.75turn); }
+}
+@keyframes sunpulse {
+   from { box-shadow: 0 0 100px #ff0, 0 0 100px #ff0; }
+  to { box-shadow: 0 0 50px #ff0, 0 0 75px #ff0;  }
+}
+@keyframes moontrack {
+  from { transform: rotate(-0.75turn); }
+  to { transform: rotate(0.25turn); }
+}
+@keyframes moonpulse {
+   from { box-shadow: 0 0 100px #eee, 0 0 100px #eee; }
+  to { box-shadow: 0 0 50px #eee, 0 0 75px #eee;  }
+}
+
+.sun {
+  width: 4vw;
+  height: 4vw;
+  background: #ff0;
+  background: radial-gradient(ellipse at center, #f90 0%,#fc0 60%,#ff0 100%);
+  border-radius: 100%;
+  position: relative;
+  bottom: -7vw;
+  right: 7vw;
+  transform-origin: 0vw 0vw;
+  animation: suntrack 44s infinite linear, sunpulse 2s alternate infinite;
+  animation-play-state: var(--st);
+}
+.moon {
+  background: radial-gradient(ellipse at center, #fff 0%,#eec 60%,#ffe 100%);
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  position: relative;
+  border-radius: 100%;
+  bottom: -7vw;
+  right: 7vw;
+  transform-origin: 0vw 0vw;
+  animation: moontrack 43s infinite linear, moonpulse 2s alternate infinite;
+  opacity: .9;
+  animation-play-state: var(--st);
+}
+
+.wojack {
+    aspect-ratio: 1;
+    border-radius: 50%;
+}

@@ -14,7 +14,7 @@ aliases = ["/conference/"]
     - Simulazioni come strumento di testing, perché? 
     - Multiple simulazioni, vengono poi aggregate per ottenre un risultato
     - Problemi, ci vuole un fracco di tempo (mostra processo)
-    OBJECTIVE
+    OBJECTIVEczlc
     - Creare un architettura che permette di visionare aspetti di simulazioni a run time
     HOW TO DO THIS?
     - Monitorare simulazione distributie non è troppo diverso da monitorare un DS classico ma...
@@ -37,29 +37,44 @@ aliases = ["/conference/"]
 -->
 
 # An Architecture and Prototype for Monitoring Distributed Simulations of Distributed Systems
+## DS-RT 2024 - Urbino, Italy, 2024
+### Angelo Filaseta - angelo.filaseta@unibo.it
+### Danilo Pianini - danilo.pianini@unibo.it
+### Angela Cortecchia - angela.cortecchia@unibo.it
 
 ---
 
-# Introduction
+# Simulations as Testing Tools
 
-{{< figure src="problem.svg" height="20">}}
-
-{{< figure src="connections.svg" height="20">}}
-
----
-
-# The Alchemist Simulator
-
-{{< figure src="logo.svg" height="20">}}
-<video loop data-autoplay src="alchemist.mp4"> </video>
+- Simulations allow to **validate** theories by comparing outcomes with expected or real-world behavior;
+- Usually, **multiple simulations** are run to obtain a statistically significant result;
+  - The results are usually **aggregated** using statistical methods (mean, median, etc.);
 
 ---
 
-# Use case
+<div class="sky">
+    <div class="sun"></div>
+    <div class="moon"></div>
+</div>
 
+# Cycle
 
+{{% multicol %}}{{% col class="col-8"%}}
+- This process is **time-consuming** and **resource intensive**. 
+- Even under the most optimistic assumptions, the time required to unify the results is bound to the slowest run.
+- We're not mentioning the possibility of **anomalies**.
+{{% /col %}}
+{{% col class="col-4"%}}
+<img src="wojack.jpg" class="wojack"/>
+{{% /col %}}
+{{% /multicol %}}
 
-{{< figure src="use-case.svg" height="20">}}
+---
+
+# Objective
+- We want to tackle the issue of monitoring multiple distributed simulations of distributed systems in real-time.
+- The objective is to provide early feedback to developers about the behavior of the system under development.
+- After an initial fine-tuning using these methodologies, the system can be tested in a more traditional way, saving time in the long run.
 
 ---
 
@@ -70,30 +85,69 @@ aliases = ["/conference/"]
 -  **Target Distributed System (TDS)**: the simulated element where the properties of interest are located;
 -  **Network Node**: the logical device, identified hosting and executing one or more **TDS**s.
 -  **Broker**: offers an interface to interact with a **TDS**.
-   In this architecture, a broker interacts with only one **TDS** using three types of interactions: _Query_, _Action_, and _Subscription_.
+   - In this architecture, a broker interacts with only one **TDS** using three types of interactions: _Query_, _Action_, and _Subscription_.
 - **Monitor**: interacts with multiple **Brokers** to obtain data from the **TDS**s.
 
-{{< figure src="architecture.svg" height="20">}}
+{{< figure src="connections.svg" >}}
+
+---
+
+# Architecture
+{{< figure src="architecture.svg" width="150%">}}
 
 ---
 
 # Evaluation
 
-{{< figure src="oneroot.gif" height="20">}}
+{{% multicol %}}{{% col class="col-8"%}}
+- A morphogenesis process is used as a case study for evaluation.
+  - It implements an extended version of the *Vascular Morphogenesis Controller* algorithm in **Aggregate Computing**.
+  
+- **Nodes** are depicted as circles, while **communication channels** are represented by lines.
+- The <strong style=" color:#006666">cyan</strong> and <strong style="color:#6B5000">yellow</strong> areas represent different kinds of resources, attracting the growth of the structure.
+- The algorithm begins with a single node and will generate more according to the environmental conditions.
+{{% /col %}}
+{{% col class="col-4"%}}
+{{< figure src="oneroot.gif" width="150%">}}
+<div align="center">
+Visual evolution of the simulation under observation
+</div>
+{{% /col %}}
+{{% /multicol %}}
+
+<small>Our reproducibility suite is available on GitHub :  [AngeloFilaseta/dsrt-2024-distributed-monitoring](https://github.com/AngeloFilaseta/dsrt-2024-distributed-monitoring) </small>
 
 ----
 
-# Evaluation 2
+# Evaluation - Scalability
 
-Number of simulations used for the evaluation: 100
+- A **Baseline Query** retrieve the whole state of the simulation , while the **Specific Query** retrieves a subset of data.
+
+- The size of the response is checked for both queries as the number of nodes increase in the simulation.
+    - In both approaches, the response size scale proportionally with the node count;
+    - However, the **Specific Query** is more efficient, as it retrieves only the required data in *real-time*.
+
 {{< figure src="scalability.svg" height="20">}}
+<small>Results reflect the aggregation of *10* simulations, each with a different seed.</small>
 
 ---
 
-# Evaluation 3
+# Evaluation - Efficiency
 
-Number of simulations used for the evaluation: 10
+- **Lost updates**:  a missed event that occurred between two consecutive query calls, in which the target measure changed one or more times, but it was not captured
+- **Useless polling**: a query is executed without capturing new events since the last executed query.
+
 {{< figure src="efficiency.svg" height="20">}}
+
+<small>Results reflect the aggregation of *100* simulations, each with a different seed.</small>
+
+---
+
+# Evaluation - Viability
+
+- It is possible to monitor the evolution of data of multiple distributed simulation in real-time.
+- A very basic aggregation algorithm has also been implemented.
+    - It helps in identifying the overall trends of all the simulations.
 
 ---
 
