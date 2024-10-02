@@ -52,48 +52,81 @@ aliases = ["/conference/"]
 
 ---
 
-<div class="sky">
-    <div class="sun"></div>
-    <div class="moon"></div>
-</div>
-
-# Cycle
-
+# It seems pretty straightforward, but...
+###  Ever experienced a little déjà vu in your workflow?
 {{% multicol %}}{{% col class="col-8"%}}
-- This process is **time-consuming** and **resource intensive**. 
-- Even under the most optimistic assumptions, the time required to unify the results is bound to the slowest run.
-- We're not mentioning the possibility of **anomalies**.
+
+- In reality, this process is both **time-consuming** and **resource-intensive** <small>(and also quite tedious)</small>
+- Even under the most favorable conditions,
+the time needed to unify the results *is constrained by the slowest execution* among the runs.
+
+- Moreover, we are not accounting for the potential occurrence of **anomalies**, which could not only prolong the time required for the process
+  - but may also necessitate starting over entirely! <small>(😭)</small>
+
 {{% /col %}}
 {{% col class="col-4"%}}
-<img src="wojack.jpg" class="wojack"/>
+<img src="wojack.gif" class="wojack"/>
+{{% /col %}}
+{{% /multicol %}}
+
+
+---
+
+# Objective
+
+- An **efficient** and **scalable** method for monitoring *multiple* distributed simulations in real-time is required.
+
+- The objective is to provide **early feedback** about the behavior of the system under development.
+
+- The system will still be validated using the traditional way, but *a lot of time can be saved* in the long run!<small>(🤩)</small>
+
+---
+
+# Architecture
+
+
+{{% multicol %}}
+{{% col class="col-7" %}}
+### Key Components
+-  **Target Distributed System (TDS)**:<br> the simulated element in which properties of interest are located;
+
+-  **Network Node**:<br> the logical device hosting and executing one or more TDSs;
+
+-  **Broker**:<br> provides an interface to interact with a TDS;
+    - In this architecture, a broker interacts with only one TDS;
+    - three types of interactions: _Query_, _Action_, and _Subscription_;
+   
+- **Monitor**:<br> interacts with multiple Brokers in order to retrieve data from the TDSs.
+
+{{% /col %}}
+
+{{% col class="mt-5 col-5" %}}
+{{< figure src="connections.svg" width="150%">}}
 {{% /col %}}
 {{% /multicol %}}
 
 ---
 
-# Objective
-- We want to tackle the issue of monitoring multiple distributed simulations of distributed systems in real-time.
-- The objective is to provide early feedback to developers about the behavior of the system under development.
-- After an initial fine-tuning using these methodologies, the system can be tested in a more traditional way, saving time in the long run.
+# A basic implementation
 
----
+{{% multicol %}}
+{{% col class="mt-5 col-7" %}}
 
-# Architecture
+- The **Monitor** is a *Web Application*;
+  - Thanks to the rich ecosystem of libraries available, data visualization can be effectively implemented;
+  
+- The **Broker** is a *GraphQL* Server;
+  - The GraphQL schema is an ideal choice, providing great flexibility in query construction;
+  - It allows to retrieve exactly (and only) the data we need, using the simulator's terminology for intuitive and efficient data access;
+  
+- Finally, the **TDS** is implemented using *Alchemist*;
+  - Alchemist is a general purpose simulator wih a focus on pervasive, aggregate, and nature-inspired computing.
 
-## Key Components
-
--  **Target Distributed System (TDS)**: the simulated element where the properties of interest are located;
--  **Network Node**: the logical device, identified hosting and executing one or more **TDS**s.
--  **Broker**: offers an interface to interact with a **TDS**.
-   - In this architecture, a broker interacts with only one **TDS** using three types of interactions: _Query_, _Action_, and _Subscription_.
-- **Monitor**: interacts with multiple **Brokers** to obtain data from the **TDS**s.
-
-{{< figure src="connections.svg" >}}
-
----
-
-# Architecture
+{{% /col %}}
+{{% col class="mt-5 col-5" %}}
 {{< figure src="architecture.svg" width="150%">}}
+{{% /col %}}
+{{% /multicol %}}
 
 ---
 

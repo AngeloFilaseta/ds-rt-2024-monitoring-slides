@@ -404,18 +404,37 @@ background: #0101;
     animation: dayNightCycle 50s infinite;
 }
 
-@keyframes dayNightCycle {
+.gradient {
+     animation: gradientColor 50s infinite;
+}
+
+@keyframes gradientColor {
     0% {
-        background-color: #87CEEB; /* Day sky */
+        color: #000;
+    }
+    30% {
         color: #000;
     }
     50% {
-        background-color: #2F4F4F; /* Night sky */
         color: #FFF;
+    }
+    70% {
+        color: #000;
+    }
+    100% {
+        color: #000;
+    }
+}
+
+@keyframes dayNightCycle {
+    0% {
+        background-color: #87CEEB; /* Day sky */
+    }
+    50% {
+        background-color: #2F4F4F; /* Night sky */
     }
     100% {
         background-color: #87CEEB; /* Back to Day */
-        color: #000;
     }
 }
 
@@ -437,29 +456,29 @@ background: #0101;
 }
 
 .sun {
-  width: 4vw;
-  height: 4vw;
+  width: 3vw;
+  height: 3vw;
   background: #ff0;
   background: radial-gradient(ellipse at center, #f90 0%,#fc0 60%,#ff0 100%);
   border-radius: 100%;
   position: relative;
-  bottom: -7vw;
-  right: 7vw;
-  transform-origin: 0vw 0vw;
-  animation: suntrack 44s infinite linear, sunpulse 2s alternate infinite;
+  top: 0;
+  left: 0;
+  transform-origin: 25vw 25vw;
+  animation: suntrack 35s infinite linear, sunpulse 2s alternate infinite;
   animation-play-state: var(--st);
 }
 .moon {
   background: radial-gradient(ellipse at center, #fff 0%,#eec 60%,#ffe 100%);
   border-radius: 100%;
-  width: 4vw;
-  height: 4vw;
+  width: 3vw;
+  height: 3vw;
   position: relative;
   border-radius: 100%;
-  bottom: -7vw;
-  right: 7vw;
-  transform-origin: 0vw 0vw;
-  animation: moontrack 43s infinite linear, moonpulse 2s alternate infinite;
+  top: 0;
+  left: 0;
+  transform-origin: 25vw 25vw;
+  animation: moontrack 35s infinite linear, moonpulse 2s alternate infinite;
   opacity: .9;
   animation-play-state: var(--st);
 }
@@ -468,3 +487,4 @@ background: #0101;
     aspect-ratio: 1;
     border-radius: 50%;
 }
+
