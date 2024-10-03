@@ -3,9 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/submodules" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/submodules/shared-slides" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/submodules/shared-slides/PPS-ci-examples" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/submodules/shared-slides/PPS-ci-examples/01-dependencies" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/submodules/themes/reveal-hugo" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/submodules/themes/reveal-hugo/static/reveal-js" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/themes/reveal-hugo" vcs="Git" />
