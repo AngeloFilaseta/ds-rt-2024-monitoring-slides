@@ -105,11 +105,29 @@ the time needed to unify the results <em>is constrained by the slowest execution
 </section><section>
 <h2 id="distributed-simulations-of-distributed-systems">Distributed Simulations of Distributed Systems</h2>
 <ul>
-<li>An <strong>efficient</strong> and <strong>scalable</strong> method for monitoring <em>multiple</em> distributed simulations in real-time is required;</li>
+<li>The objective is to monitor <strong>multiple simulations of distributed system</strong> in real-time;</li>
 </ul>
-<figure><img src="trans.svg">
-</figure>
-
+<div class="r-stack">
+  <div class="fragment current-visible" data-fragment-index="0">
+    <figure>
+    <img src="1.drawio.svg" width="50%">
+        <figcaption>A monitor observes a distributed system</figcaption>
+    </figure>
+  </div>
+  <div class="fragment current-visible" data-fragment-index="1">
+    <figure>
+    <img src="2.drawio.svg" width="40%">
+        <figcaption>A monitor observes a single network node<br>which is executing multiple simulations of a distributed system</figcaption>
+    </figure>
+  </div>
+  <div class="fragment current-visible" data-fragment-index="2">
+    <figure>
+    <img src="3.drawio.svg" width="40%">
+        <figcaption>A monitor observes multiple simulations of a distributed system <br> which are being executed on multiple network nodes</figcaption>
+    </figure>
+  </div>
+</div>
+<div class="fragment" data-fragment-index="2">
 <ul>
 <li>
 <p>Monitoring <em>distributed simulations</em> is more complex than monitoring <em>traditional distributed systems</em>;</p>
@@ -121,6 +139,7 @@ the time needed to unify the results <em>is constrained by the slowest execution
 </ul>
 </li>
 </ul>
+</div>
 </section><section>
 <h1 id="architecture">Architecture</h1>
 
@@ -152,7 +171,7 @@ the time needed to unify the results <em>is constrained by the slowest execution
 </div>
 </section><section>
 <h1 id="challenges">Challenges</h1>
-<p>This work advances the current state of the art addressing some open challenges in <em>parallel and distributed simulation</em>, as classified by Fujimoto [1].</p>
+<p>This work advances the current state of the art addressing some open challenges in <em>parallel and distributed simulation</em>, as classified by Fujimoto [1]:</p>
 <ul>
 <li><strong>“Online decision-making using real-time distributed simulation”</strong>:<br>
 real-time feedback to developers is provided, supporting their work;</li>
@@ -337,6 +356,11 @@ Visual evolution of the simulation under observation
 </ul>
 </section><section>
 <h1 id="thank-you-for-your-attention">Thank you for your attention!</h1>
+<small>
+<p><strong>Angelo Filaseta</strong> - <a href="mailto:angelo.filaseta@unibo.it">angelo.filaseta@unibo.it</a><br>
+<strong>Danilo Pianini</strong> - <a href="mailto:danilo.pianini@unibo.it">danilo.pianini@unibo.it</a><br>
+<strong>Angela Cortecchia</strong> - <a href="mailto:angela.cortecchia@unibo.it">angela.cortecchia@unibo.it</a></p>
+</small>
 <figure><img src="questions.webp" width="15%">
 </figure>
 
