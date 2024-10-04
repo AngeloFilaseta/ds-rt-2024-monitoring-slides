@@ -297,3 +297,7 @@ Visual evolution of the simulation under observation
 </small>
 
 ---
+
+# Interaction Use Case
+
+{{< figure src="use-case.svg" width="150%">}}
