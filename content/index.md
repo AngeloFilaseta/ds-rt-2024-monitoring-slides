@@ -47,7 +47,8 @@ aliases = ["/conference/"]
 # Simulations as Testing Tools
 
 - Simulations allow to **validate** theories by comparing outcomes with expected or real-world behavior;
-- Usually, **multiple simulations** are run in parallel to obtain a statistically significant result;
+- Usually, **multiple simulations** are run *in parallel* to obtain a statistically significant result;
+- Simulations can also be *distributed* across multiple nodes to speed up the process even further;
   - The results are usually **aggregated** using statistical methods (mean, median, etc.);
 
 {{< figure src="classic.drawio.svg" width="75%">}}
@@ -65,6 +66,9 @@ the time needed to unify the results *is constrained by the slowest execution* a
 - Moreover, we are not accounting for the potential occurrence of **anomalies**, which could not only prolong the time required for the process
   - but may also necessitate starting over entirely! <small>(😭)</small>
 
+- What we want are **early feedback** about the behavior of the system under development;
+  - The system will still be validated using the traditional way, but *a lot of time can be saved* in the long run!<small>(🤩)</small>
+
 {{% /col %}}
 {{% col class="col-4"%}}
 <img src="wojack.gif" class="wojack"/>
@@ -78,12 +82,10 @@ the time needed to unify the results *is constrained by the slowest execution* a
 
 - An **efficient** and **scalable** method for monitoring *multiple* distributed simulations in real-time is required;
 
-- The objective is to provide **early feedback** about the behavior of the system under development;
-  - The system will still be validated using the traditional way, but *a lot of time can be saved* in the long run!<small>(🤩)</small>
-
 {{< figure src="trans.svg" >}}
 
 - Monitoring *distributed simulations* is more complex than monitoring *traditional distributed systems*;
+
 - The parameters to track may not be predefined or known in advance.
   - General-purpose simulators are even more challenging, since parameters may change frequently.
 
@@ -91,17 +93,16 @@ the time needed to unify the results *is constrained by the slowest execution* a
 
 # Architecture
 
-
 {{% multicol %}}
 {{% col class="col-7" %}}
 ### Key Components
 -  **Target Distributed System (TDS)**:<br> the simulated element in which properties of interest are located;
 
--  **Network Node**:<br> the logical device hosting and executing one or more TDSs;
+-  **Network Node**:<br> the logical device hosting and executing TDSs;
 
 -  **Broker**:<br> provides an interface to interact with a TDS;
-    - In this architecture, a broker interacts with only one TDS;
-    - three types of interactions: _Query_, _Action_, and _Subscription_;
+    - a Broker interacts with only one TDS;
+    - three types of interactions: _Query_, _Action_, and **Subscription**;
    
 - **Monitor**:<br> interacts with multiple Brokers in order to retrieve data from the TDSs.
 
@@ -114,19 +115,33 @@ the time needed to unify the results *is constrained by the slowest execution* a
 
 ---
 
-# A basic implementation
+# Challenges
+
+This work advances the current state of the art addressing some open challenges in *parallel and distributed simulation*, as classified by Fujimoto [1].
+
+- **"Online decision-making using real-time distributed simulation”**:<br>
+  real-time feedback to developers is provided, supporting their work;
+- **"Rapid composition of distributed simulations"**:<br>
+thanks to a flexible query architecture, information from diverse simulations can be joined at runtime;
+  - *Scalability*: unnecessary data are not transmitted;
+  - *Efficiency*: thanks to a subscription-based approach, data retrieval can be optimized.
+
+<small>[1] R. M. Fujimoto, Research challenges in parallel and distributed simulation, ACM Trans. Model. Comput. Simul., May 2016</small>
+
+---
+# An Exemplar Implementation
 
 {{% multicol %}}
 {{% col class="mt-5 col-7" %}}
 
 - The **Monitor** is a *Web Application*;
-  - Thanks to the rich ecosystem of libraries available, data visualization can be effectively implemented;
+  - Thanks to the rich ecosystem of libraries available, data visualization can be implemented effectively;
   
 - The **Broker** is a *GraphQL* Server;
-  - The GraphQL schema is an ideal choice, providing great flexibility in query construction;
+  - The GraphQL schema provides great flexibility in query construction;
   - It allows to retrieve exactly (and only) the data we need, using the simulator's terminology for intuitive and efficient data access;
   
-- Finally, the **TDS** is implemented using *Alchemist*<small>[1]</small>;
+- Finally, the **TDS** is implemented using *Alchemist*<small>[2]</small>;
   - Alchemist is a general purpose simulator wih a focus on pervasive, aggregate, and nature-inspired computing.
 
 {{% /col %}}
@@ -136,7 +151,7 @@ the time needed to unify the results *is constrained by the slowest execution* a
 {{% /multicol %}}
 
 <small style="text-align: left">
-[1] Pianini, D., Montagna, S., & Viroli, M. (2013). Chemical-oriented simulation of computational systems with ALCHEMIST. Journal of Simulation, 7(3), 202–215.</br>
+[2] Pianini, D., Montagna, S., & Viroli, M. (2013). Chemical-oriented simulation of computational systems with ALCHEMIST. Journal of Simulation, 7(3), 202–215.</br>
 </small>
 
 ---
@@ -144,12 +159,11 @@ the time needed to unify the results *is constrained by the slowest execution* a
 # Evaluation
 
 {{% multicol %}}{{% col class="col-8"%}}
-- A morphogenesis process is used as a case study for evaluation.
-  - It implements an extended version of the *Vascular Morphogenesis Controller* algorithm in **Aggregate Computing** <small>[2]</small>.
-  
-- **Nodes** are depicted as circles, while **communication channels** are represented by lines.
-- The <strong style=" color:#006666">cyan</strong> and <strong style="color:#6B5000">yellow</strong> areas represent different kinds of resources, attracting the growth of the structure.
-- The algorithm begins with a single node and will generate more according to the environmental conditions.
+- An experiment from the literature is used as a case study for evaluation.
+  - It implements an extended version of the *Vascular Morphogenesis Controller* algorithm in **Aggregate Computing** <small>[3]</small>.
+
+- The algorithm begins with a *single node* and will gradually generate more according to the environmental conditions.
+
 {{% /col %}}
 {{% col class="col-4"%}}
 {{< figure src="oneroot.gif" width="150%">}}
@@ -159,46 +173,78 @@ Visual evolution of the simulation under observation
 {{% /col %}}
 {{% /multicol %}}
 <small>
-[2] Cortecchia, A., (2024). Multiplatform Self-Organizing Systems Through a Kotlin-MP Implementation of Aggregate Computing. International Conference on ACSOS 2024.</br>
+[3] Cortecchia, A., (2024). Multiplatform Self-Organizing Systems Through a Kotlin-MP Implementation of Aggregate Computing. International Conference on ACSOS 2024.</br>
 </small>
 
 <small>Our reproducibility suite is available on GitHub :  [AngeloFilaseta/dsrt-2024-distributed-monitoring](https://github.com/AngeloFilaseta/dsrt-2024-distributed-monitoring) </small>
 
 ----
 
+# Evaluation
+## Real-time feedback
+
+- The proposed prototype allows for **real-time monitoring** of data evolution across *multiple distributed simulations*;
+
+- Data from all simulations can be *aggregated* to provide a comprehensive overview of the system being observed.
+
+{{% qrcode data="https://github.com/AngeloFilaseta/dsrt-2024-distributed-monitoring" %}}
+
+---
+
 # Evaluation - Scalability
+{{% multicol %}}
+{{% col %}}
+- A **Baseline Query** retrieves the whole state of the simulation;
+  - the typical approach for monitoring distributed systems.
 
-- A **Baseline Query** retrieve the whole state of the simulation , while the **Specific Query** retrieves a subset of data.
+{{% /col %}}
+{{% col %}}
+- A **Specific Query** retrieves only a required subset of data;
+  - the approach proposed in this work.
 
-- The size of the response is checked for both queries as the number of nodes increase in the simulation.
-    - In both approaches, the response size scale proportionally with the node count;
-    - However, the **Specific Query** is more efficient, as it retrieves only the required data in *real-time*.
+{{% /col %}}
+{{% /multicol %}}
 
-{{< figure src="scalability.svg" height="20">}}
+- The *size of the response* is checked for both queries as the number of nodes increase in the simulation.
+
+{{< figure src="scalability.svg" width="40%">}}
+
+- In both approaches, the response size **scales proportionally** with the node count;
+- However, the **Specific Query is more efficient**, as it retrieves only the *required data*.
+
 <small>Results reflect the aggregation of *10* simulations, each with a different seed.</small>
 
 ---
 
 # Evaluation - Efficiency
 
-- **Lost updates**:  a missed event that occurred between two consecutive query calls, in which the target measure changed one or more times, but it was not captured
+- Without access to a subscriptions, **polling** can be used to continuously retrieve data from the simulation;
+
+- Selecting the polling frequency becomes crucial to *balance* the trade-off between **Lost Updates** and **Useless Polling**.
+
+- Moreover, the *speed at which the simulators handle events* significantly influences this choice.
+
+<small>
+
+- **Lost update**:  a missed event that occurred between two consecutive query calls;
 - **Useless polling**: a query is executed without capturing new events since the last executed query.
 
-{{< figure src="efficiency.svg" height="20">}}
+</small>
+
+{{< figure src="efficiency.svg">}}
 
 <small>Results reflect the aggregation of *100* simulations, each with a different seed.</small>
 
 ---
 
-# Evaluation - Viability
-
-- It is possible to monitor the evolution of data of multiple distributed simulation in real-time.
-- A very basic aggregation algorithm has also been implemented.
-    - It helps in identifying the overall trends of all the simulations.
-
----
-
 # Future Work
+
+- Focus on **refining** the presented prototype;
+  - **Enhance the UI** in terms of *features* and *usability*;
+- Apply the proposed architecture to other simulators to verify its **general applicability**;
+- Investigate potential **memory issues** that may be induced by a *subscription-based approach* in *fast-paced* simulations;
+- Investigate the effect of potential countermeasures, such as **throttling**, in an extremely challenging larger-scale scenario with very fast events.
+
 
 ---
 
@@ -206,9 +252,13 @@ Visual evolution of the simulation under observation
 
 {{< figure src="questions.webp" width="15%">}}
 
-#### Some Media Attributions are required
+##### Some Media Attributions are required
+
+<small>
 
 - [Flaticon](https://www.flaticon.com/) has been used to retrieve some icons: credits to *Freepik*;
 - [Giphy](https://giphy.com/) has been used to retrieve some gifs and stickers, credits to *WimpyKid*.
+
+</small>
 
 ---
