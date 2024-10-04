@@ -117,7 +117,7 @@ the time needed to unify the results *is constrained by the slowest execution* a
 
 # Challenges
 
-This work advances the current state of the art addressing some open challenges in *parallel and distributed simulation*, as classified by Fujimoto [1].
+This work advances the current state of the art addressing some open challenges in *parallel and distributed simulation*, as classified by Fujimoto [1]:
 
 - **"Online decision-making using real-time distributed simulation”**:<br>
   real-time feedback to developers is provided, supporting their work;
@@ -252,6 +252,16 @@ Visual evolution of the simulation under observation
 ---
 
 # Thank you for your attention!
+
+<small>
+
+**Angelo Filaseta** - angelo.filaseta@unibo.it<br>
+**Danilo Pianini** - danilo.pianini@unibo.it<br>
+**Angela Cortecchia** - angela.cortecchia@unibo.it
+
+</small>
+
+
 
 {{< figure src="questions.webp" width="15%">}}
 
