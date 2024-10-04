@@ -241,8 +241,11 @@ Visual evolution of the simulation under observation
 
 - Focus on **refining** the presented prototype;
   - **Enhance the UI** in terms of *features* and *usability*;
+  
 - Apply the proposed architecture to other simulators to verify its **general applicability**;
+
 - Investigate potential **memory issues** that may be induced by a *subscription-based approach* in *fast-paced* simulations;
+
 - Investigate the effect of potential countermeasures, such as **throttling**, in an extremely challenging larger-scale scenario with very fast events.
 
 
