@@ -75,19 +75,41 @@ the time needed to unify the results *is constrained by the slowest execution* a
 {{% /col %}}
 {{% /multicol %}}
 
-
 ---
 
 ## Distributed Simulations of Distributed Systems
 
-- An **efficient** and **scalable** method for monitoring *multiple* distributed simulations in real-time is required;
+- The objective is to monitor **multiple simulations of distributed system** in real-time;
 
-{{< figure src="trans.svg" >}}
+<div class="r-stack">
+  <div class="fragment current-visible" data-fragment-index="0">
+    <figure>
+    <img src="1.drawio.svg" width="50%"/>
+        <figcaption>A monitor observes a distributed system</figcaption>
+    </figure>
+  </div>
+  <div class="fragment current-visible" data-fragment-index="1">
+    <figure>
+    <img src="2.drawio.svg" width="40%"/>
+        <figcaption>A monitor observes a single network node<br>which is executing multiple simulations of a distributed system</figcaption>
+    </figure>
+  </div>
+  <div class="fragment current-visible" data-fragment-index="2" data-fragment-index="3">
+    <figure>
+    <img src="3.drawio.svg" width="40%"/>
+        <figcaption>A monitor observes multiple simulations of a distributed system <br> which are being executed on multiple network nodes</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="fragment" data-fragment-index="2">
 
 - Monitoring *distributed simulations* is more complex than monitoring *traditional distributed systems*;
 
 - The parameters to track may not be predefined or known in advance.
   - General-purpose simulators are even more challenging, since parameters may change frequently.
+ 
+</div>
 
 ---
 
