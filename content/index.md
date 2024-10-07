@@ -38,7 +38,13 @@ aliases = ["/conference/"]
 
 # An Architecture and Prototype for Monitoring Distributed Simulations of Distributed Systems
 ## DS-RT 2024 - Urbino, Italy, 2024
-### Angelo Filaseta - angelo.filaseta@unibo.it
+
+
+<h3>
+<span style="color: #b81f0b;">  Angelo Filaseta </span> - <a href="angelo.filaseta@unibo.it">angelo.filaseta@unibo.it</a>
+</h3>
+
+
 ### Danilo Pianini - danilo.pianini@unibo.it
 ### Angela Cortecchia - angela.cortecchia@unibo.it
 
